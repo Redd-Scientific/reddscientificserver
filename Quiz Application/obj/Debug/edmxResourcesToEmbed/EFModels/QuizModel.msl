@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="QuizAppDBModelStoreContainer" CdmEntityContainer="QuizAppDBEntities">
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="QuizAppDBModel.Category">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Questions">
+      <EntityTypeMapping TypeName="QuizAppDBModel.Question">
+        <MappingFragment StoreEntitySet="Question">
+          <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
+          <ScalarProperty Name="Question1" ColumnName="Question" />
+          <ScalarProperty Name="AnswerA" ColumnName="AnswerA" />
+          <ScalarProperty Name="AnswerB" ColumnName="AnswerB" />
+          <ScalarProperty Name="AnswerC" ColumnName="AnswerC" />
+          <ScalarProperty Name="AnswerD" ColumnName="AnswerD" />
+          <ScalarProperty Name="Correct" ColumnName="Correct" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

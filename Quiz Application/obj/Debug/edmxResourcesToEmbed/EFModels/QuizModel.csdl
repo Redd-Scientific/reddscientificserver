@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QuizAppDBModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="QuizAppDBEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="Categories" EntityType="QuizAppDBModel.Category" />
+    <EntitySet Name="Questions" EntityType="QuizAppDBModel.Question" />
+    <AssociationSet Name="CategoryKey" Association="QuizAppDBModel.CategoryKey">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="Question" EntitySet="Questions" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="CategoryID" />
+    </Key>
+    <Property Name="CategoryID" Type="Int16" Nullable="false" />
+    <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Questions" Relationship="QuizAppDBModel.CategoryKey" FromRole="Category" ToRole="Question" />
+  </EntityType>
+  <EntityType Name="Question">
+    <Key>
+      <PropertyRef Name="QuestionID" />
+    </Key>
+    <Property Name="QuestionID" Type="Int16" Nullable="false" />
+    <Property Name="Question1" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="AnswerA" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="AnswerB" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="AnswerC" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="AnswerD" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Correct" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="true" />
+    <Property Name="CategoryID" Type="Int16" Nullable="false" />
+    <NavigationProperty Name="Category" Relationship="QuizAppDBModel.CategoryKey" FromRole="Question" ToRole="Category" />
+  </EntityType>
+  <Association Name="CategoryKey">
+    <End Role="Category" Type="QuizAppDBModel.Category" Multiplicity="1" />
+    <End Role="Question" Type="QuizAppDBModel.Question" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="Question">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
